@@ -40,6 +40,10 @@
       margin-top: 10px;
       font-weight: bold;
     }
+    LabelImmu {
+      display: block;
+      font-weight: bold;
+    }
 
     input[type="text"],
     input[type="date"],
@@ -89,13 +93,46 @@
       background-color: #1a6fd0;
     }
 
-    div.absolute {
-      position: absolute;
-      right: 150px;
+    .field-health {
+      float: left;
+      height: 100px;
+      width: 400px;
+      border: 0;
+    }
+
+    .field-immunization{
+      float: right;
+      margin-top: 15px;
+      height: 50px;
+      width: 300px;
+
+    }
+
+    .field-citizenship {
+      float: left;
+      height: 200px;
+      width: 550px;
+    }
+
+    .status-canada {
       width: 200px;
-      height: 120px;
-      border: 3px solid green;
-    } 
+      height: 215px;
+      float: right;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 15px;
+    }
+
+    .status-canada label {
+      display: block;
+      margin-top: 5px;
+      font-weight: normal;
+    }
+
+    .status-canada h5 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -103,7 +140,7 @@
   <h2>Student Registration Form</h2>
 
   <form action="form.php" method="POST">
-    
+
     <!-- School Use -->
     <fieldset>
       <legend>For School Use</legend>
@@ -176,44 +213,48 @@
     <!-- Health -->
     <fieldset>
       <legend>Health Information</legend>
-      <label>Medical Conditions: <input type="text" name="medical_conditions"></label>
-      <label>Immunization Record Provided?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="immunization" value="Yes"> Yes</label>
-        <label><input type="radio" name="immunization" value="No"> No</label>
-      </div>
-      <label>Does the student require an epi-pen?</label>
-      <div class="radio-group">
-        <label><input type="radio" name="epipen" value="Yes"> Yes</label>
-        <label><input type="radio" name="epipen" value="No"> No</label>
-      </div>
+      <fieldset class="field-health">
+        <label>Medical Conditions: <input type="text" name="medical_conditions"></label>
+        <label>Does the student require an epi-pen?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="epipen" value="Yes"> Yes</label>
+          <label><input type="radio" name="epipen" value="No"> No</label>
+        </div>
+      </fieldset>
+      <fieldset class = "field-immunization">
+        <LabelImmu>Immunization Record Provided?</LabelImmu>
+        <div class="radio-group">
+          <label><input type="radio" name="immunization" value="Yes"> Yes</label>
+          <label><input type="radio" name="immunization" value="No"> No</label>
+        </div>
+      </fieldset>
     </fieldset>
     <!-- Citizenship -->
     <fieldset>
-      <legend>Citizenship Information</legend>
-      <div class="inline">
-        <label>Birth Country: <input type="text" name="birth_country"></label>
-        <label>If Canada, Province: <input type="text" name="province"></label>
-        <fieldset>
-          <h5>For School Use - Status in Canada:</h3>
-          <label><input type="checkbox" name="status[]" value="Citizen"> Canadian Citizen</label>
-          <label><input type="checkbox" name="status[]" value="PR"> Permanent Resident</label>
-          <label><input type="checkbox" name="status[]" value="StudyPermit"> Study Permit</label>
-          <label><input type="checkbox" name="status[]" value="Native"> Native Ancestry</label>
-          <label><input type="checkbox" name="status[]" value="Other"> Other</label>
-        </fieldset>
-      </div>
-      <label>Country of Citizenship: <input type="text" name="citizenship"></label>
-      <label>Status in Canada:</label>
-      <label>Entered Canada (if not born here):</label>
-      <div class="inline">
-        <label>Year: <input type="text" name="entry_year"></label>
-        <label>Month: <input type="text" name="entry_month"></label>
-        <label>Day: <input type="text" name="entry_day"></label>
-      </div>
-      </div>
+      <fieldset class = "field-citizenship">
+        <legend>Citizenship Information</legend>
+        <div class="inline">
+          <label>Birth Country: <input type="text" name="birth_country"></label>
+          <label>If Canada, Province: <input type="text" name="province"></label>
+        </div>
+        <label>Status in Canada:</label>
+        <label>Entered Canada (if not born here):</label>
+        <div class="inline">
+          <label>Year: <input type="text" name="entry_year"></label>
+          <label>Month: <input type="text" name="entry_month"></label>
+          <label>Day: <input type="text" name="entry_day"></label>
+        </div>
+        </div>
+      </fieldset>
+      <fieldset class="status-canada">
+        <h5>For School Use - Status in Canada:</h5>
+        <label><input type="checkbox" name="status[]" value="Citizen"> Canadian Citizen</label>
+        <label><input type="checkbox" name="status[]" value="PR"> Permanent Resident</label>
+        <label><input type="checkbox" name="status[]" value="StudyPermit"> Study Permit</label>
+        <label><input type="checkbox" name="status[]" value="Native"> Native Ancestry</label>
+        <label><input type="checkbox" name="status[]" value="Other"> Other</label>
+      </fieldset>
     </fieldset>
-
     <input type="submit" value="Register">
   </form>
 
